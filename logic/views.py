@@ -40,10 +40,15 @@ class Content(APIView):
 
         return JsonResponse({"Reservas":data,"Eventos":serializerEvents.data},safe=False)
 
-class ReservaAPIGeneric(mixins.CreateModelMixin,mixins.ListModelMixin,generics.GenericAPIView):
+class myCreateModelMixin(mixins.CreateModelMixin):
+    def perform_create(self, serializer):
+        serializer.save(cliente=self.request.user)
+
+class ReservaAPIGeneric(myCreateModelMixin,mixins.ListModelMixin,generics.GenericAPIView):
     permission_classes=[IsAuthenticated]
     serializer_class=ReservaModelSerializer
     queryset = Reserva.objects.all()
+    lookup_field = "id"
     def post(self,request,*args,**kwargs):
         return self.create(request,*args,**kwargs)
     def get(self,request,*args,**kwargs):

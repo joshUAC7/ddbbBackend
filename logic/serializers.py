@@ -35,7 +35,7 @@ class PagoModelSerializer(ModelSerializer):
         ]
 class ReservaModelSerializer(ModelSerializer):
     evento = serializers.PrimaryKeyRelatedField(queryset=Evento.objects.all())
-    # cliente = serializers.PrimaryKeyRelatedField(read_only=True)
+    cliente = serializers.PrimaryKeyRelatedField(read_only=True,default=serializers.CurrentUserDefault())
     class Meta:
         model = Reserva
         fields = [
@@ -45,6 +45,11 @@ class ReservaModelSerializer(ModelSerializer):
           "descuento",
           "lugar",
           "evento",
+          "cliente"
         ]
+    def create(self,validated_data):
+        return Reserva.objects.create(**validated_data)
+
+
 
 
