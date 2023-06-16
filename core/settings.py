@@ -153,6 +153,7 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
         "dj_rest_auth.jwt_auth.JWTCookieAuthentication",
     ),
+
 }
 REST_AUTH = {
     'USE_JWT': True,
