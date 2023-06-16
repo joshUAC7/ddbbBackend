@@ -34,7 +34,7 @@ class PagoModelSerializer(ModelSerializer):
           "monto"
         ]
 class ReservaModelSerializer(ModelSerializer):
-    evento = serializers.PrimaryKeyRelatedField(read_only=True)
+    evento = serializers.PrimaryKeyRelatedField(queryset=Evento.objects.all(),read_only=True)
     cliente = serializers.PrimaryKeyRelatedField(read_only=True)
     class Meta:
         model = Reserva
