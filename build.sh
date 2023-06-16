@@ -14,4 +14,9 @@ poetry lock
 
 python -m poetry install
 python manage.py collectstatic --no-input
+python manage.py makemigrations drfauth
+python manage.py migrate drfauth
+python manage.py makemigrations logic
+python manage.py migrate logic
+python manage.py makemigrations
 python manage.py migrate
