@@ -40,7 +40,7 @@ class Content(APIView):
 
         return JsonResponse({"Reservas":data,"Eventos":serializerEvents.data},safe=False)
 
-class ReservaAPIGeneric(generics.GenericAPIView,mixins.CreateModelMixin):
+class ReservaAPIGeneric(generics.GenericAPIView,mixins.CreateModelMixin,mixins.ListModelMixin):
     permission_classes=[IsAuthenticated]
     serializer_class=ReservaModelSerializer
     queryset = Reserva.objects.all()
