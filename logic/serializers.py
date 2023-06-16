@@ -34,7 +34,8 @@ class PagoModelSerializer(ModelSerializer):
           "monto"
         ]
 class ReservaModelSerializer(ModelSerializer):
-    evento = EventoModelSerializer()
+    evento = serializers.PrimaryKeyRelatedField()
+    cliente = serializers.PrimaryKeyRelatedField()
     class Meta:
         model = Reserva
         fields = [
@@ -44,6 +45,7 @@ class ReservaModelSerializer(ModelSerializer):
           "descuento",
           "lugar",
           "evento",
+          "cliente"
         ]
 
 
