@@ -23,6 +23,7 @@ class DetalleReservaModelSerializer(ModelSerializer):
           "cantidadPersonal",
           "cantidadInvitados",
           "cantidadMesas",
+            "reserva_id",
         ]
 class PagoModelSerializer(ModelSerializer):
     class Meta:
