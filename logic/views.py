@@ -54,11 +54,6 @@ class DetalleReservaAPIGeneric(generics.GenericAPIView,mixins.CreateModelMixin):
     queryset = DetalleReserva.objects.all()
     def post(self,request):
         self.create(request)
-class ReservaAPIADD(APIView):
-    permission_classes=[IsAuthenticated]
-    serializer_class=ReservaModelSerializer
-    def post(self,request):
-
 
 class PagoAPIGeneric(generics.GenericAPIView,mixins.CreateModelMixin):
     serializer_class=Pago
