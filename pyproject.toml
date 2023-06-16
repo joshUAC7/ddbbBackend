@@ -14,9 +14,10 @@ djangorestframework-simplejwt = "^5.2.2"
 dj-rest-auth = {version = "4.0.0", extras = ["with-social"]}
 django-allauth = "0.52.0"
 psycopg2-binary = "^2.9.6"
-mssql-django = "^1.3"
 whitenoise = {extras = ["brotli"], version = "^6.4.0"}
 gunicorn = "^20.1.0"
+mysqlclient = "^2.1.1"
+dj-database-url = "^2.0.0"
 
 
 [build-system]

@@ -9,6 +9,8 @@ For the full list of settings and their values, see https://docs.djangoproject.c
 """
 import os
 from pathlib import Path
+# Don't forget to import dj-database-url at the beginning of the file
+import dj_database_url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -21,14 +23,15 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECRET_KEY = 'django-insecure-_510t&_)(ry1*#q475p21tyf-n6vsw&4yg2a@_j)307j#=r=h!'
 SECRET_KEY = os.environ.get('SECRET_KEY', default='your secret key')
 # SECURITY WARNING: don't run with debug turned on in production!
+# DEBUG=True
 DEBUG = 'RENDER' not in os.environ
 
 # https://docs.djangoproject.com/en/3.0/ref/settings/#allowed-hosts
 ALLOWED_HOSTS = []
 
-RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
-if RENDER_EXTERNAL_HOSTNAME:
-    ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
+# RENDER_EXTERNAL_HOSTNAME = os.environ.get('RENDER_EXTERNAL_HOSTNAME')
+# if RENDER_EXTERNAL_HOSTNAME:
+#     ALLOWED_HOSTS.append(RENDER_EXTERNAL_HOSTNAME)
 
 # Application definition
 
@@ -194,20 +197,24 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME':'django_mysql',
+#         'USER':'josue',
+#         'PASSWORD':'Admin123',
+#         'HOST':'mysql-131525-0.cloudclusters.net',
+#         'PORT':'19407',
+#         # 'OPTIONS':{
+#         #     'driver':'ODBC Driver 17 for SQL Server',y
+#         #     'extra_params': "Encrypt=no"
+#         #     }
+#     }
+# }
+
 DATABASES = {
-    'default': {
-        'ENGINE': 'mssql',
-        'NAME':'django_sqlserver',
-        'USER':'josue',
-        'PASSWORD':'Admin123',
-        'HOST':'mssql-131228-0.cloudclusters.net',
-        'PORT':'15937',
-        'OPTIONS':{
-            'driver':'ODBC Driver 17 for SQL Server',
-            'extra_params': "Encrypt=no"
-            }
-    }
-}
+        'default':dj_database_url.config(default="mysql://josue:Admin123@19407/django_mysql", conn_max_age=600),
+        }
 # DATABASE_CONNECTION_POOLING = False
 
 # Password validation
