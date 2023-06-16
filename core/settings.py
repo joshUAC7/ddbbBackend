@@ -213,7 +213,7 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # }
 
 DATABASES = {
-        'default':dj_database_url.config(default="mysql://josue:Admin123@19407/django_mysql", conn_max_age=600),
+        'default':dj_database_url.config(default="mysql://josue:Admin123@mysql-131525-0.cloudclusters.net:19407/django_mysql", conn_max_age=600),
         }
 # DATABASE_CONNECTION_POOLING = False
 
